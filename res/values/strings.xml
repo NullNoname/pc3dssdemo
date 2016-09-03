@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_title">Application Crashed</string>
+    <string name="crash_close">Close</string>
+
+    <string name="app_name">PC3DSS Demo</string>
+    <string name="app_name_full">PaulsCode 3D Sound System Unofficial Android Branch Demo</string>
+
+    <string name="action_shutdown">Shutdown Sound System</string>
+    <string name="action_credits">Credits and License Info</string>
+
+    <string name="label_audiobuffersize">Audio Buffer Size (0 is auto)</string>
+    <string name="label_audiobuffersizemultiplier">Default Audio Buffer Size Multiplier</string>
+
+    <string name="button_play">Play</string>
+    <string name="button_stop">Stop</string>
+    <string name="button_play_se_ogg">Play Sound Effect (ogg)</string>
+
+    <string name="placeholder_log">Log Display</string>
+
+    <string name="song_0">Josh Woodward - Swansong (ogg)</string>
+    <string name="song_1">Drozerix - Bubble Machine (xm)</string>
+    <string name="song_2">Aesop\'s Fables, Volume 1 (Fable 1) - The Fox and The Grapes (spx)</string>
+</resources>

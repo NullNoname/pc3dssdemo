@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "21.1.2"
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+    }
+    defaultConfig { //gradle can override values in AndroidManifest.xml
+        //minSdkVersion 15
+        //targetSdkVersion 19
+        //versionCode 1
+        //versionName "1.0"
+        //applicationId  // (was packageName )
+        //applicationIdSuffix
+    }
+}
+
+dependencies {
+    compile 'com.github.NullNoname:Paulscode-SoundSystem:droid3'
+    compile 'com.github.NullNoname:paudiotrack:1.0'
+    compile 'com.github.NullNoname:micromod:a51'
+    compile 'com.github.NullNoname:jorbis:0.0.17'
+    compile 'com.github.SourceUtils:jspeex:b7f6f864f0'
+}

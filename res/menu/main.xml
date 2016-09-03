@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.github.nullnoname.pc3dssdemo.MainActivity" >
+
+    <item
+        android:id="@+id/action_shutdown"
+        android:orderInCategory="100"
+        android:title="@string/action_shutdown"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/action_credits"
+        android:orderInCategory="101"
+        android:title="@string/action_credits"
+        android:showAsAction="never"/>
+</menu>
