@@ -41,8 +41,8 @@ android {
 }
 
 dependencies {
-    compile 'com.github.NullNoname:Paulscode-SoundSystem:droid3'
-    compile 'com.github.NullNoname:paudiotrack:1.0'
+    compile 'com.github.NullNoname:Paulscode-SoundSystem:droid4'
+    compile 'com.github.NullNoname:paudiotrack:1.1'
     compile 'com.github.NullNoname:micromod:a51'
     compile 'com.github.NullNoname:jorbis:0.0.17'
     compile 'com.github.SourceUtils:jspeex:b7f6f864f0'

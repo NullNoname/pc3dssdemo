@@ -9,16 +9,19 @@
     <string name="action_shutdown">Shutdown Sound System</string>
     <string name="action_credits">Credits and License Info</string>
 
-    <string name="label_audiobuffersize">Audio Buffer Size (0 is auto)</string>
-    <string name="label_audiobuffersizemultiplier">Default Audio Buffer Size Multiplier</string>
+    <string name="label_audiobuffersize">Audio Buffer Size (blank or 0 for auto)</string>
+    <string name="label_audiobuffersizemultiplier">Buffer Size Multiplier (default is 8)</string>
+    <string name="label_play_se">Sound Effects</string>
 
     <string name="button_play">Play</string>
     <string name="button_stop">Stop</string>
-    <string name="button_play_se_ogg">Play Sound Effect (ogg)</string>
+    <string name="button_play_se_ogg">ogg</string>
+    <string name="button_play_se_wav">wav</string>
 
     <string name="placeholder_log">Log Display</string>
 
     <string name="song_0">Josh Woodward - Swansong (ogg)</string>
     <string name="song_1">Drozerix - Bubble Machine (xm)</string>
     <string name="song_2">Aesop\'s Fables, Volume 1 (Fable 1) - The Fox and The Grapes (spx)</string>
+    <string name="song_3">Mozart - Turkish March (mid)</string>
 </resources>

@@ -10,113 +10,171 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.github.nullnoname.pc3dssdemo.MainActivity" >
 
-    <EditText
-        android:id="@+id/editTextAudioBufferSize"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/label_audiobuffersize"
-        android:inputType="number" >
-        <requestFocus />
-    </EditText>
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
 
-    <EditText
-        android:id="@+id/editTextAudioBufferSizeMultiplier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/label_audiobuffersizemultiplier"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textViewSong0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/song_0" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/buttonPlay0"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_play" />
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/buttonStop0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_stop" />
+            <EditText
+                android:id="@+id/editTextAudioBufferSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_audiobuffersize"
+                android:inputType="number" >
 
-    </LinearLayout>
+                <requestFocus />
+            </EditText>
 
-    <TextView
-        android:id="@+id/textViewSong1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/song_1" />
+            <EditText
+                android:id="@+id/editTextAudioBufferSizeMultiplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/label_audiobuffersizemultiplier"
+                android:inputType="number" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/textViewSong0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/song_0" />
 
-        <Button
-            android:id="@+id/buttonPlay1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_play" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/buttonStop1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_stop" />
+                <Button
+                    android:id="@+id/buttonPlay0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play" />
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/buttonStop0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_stop" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewSong2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/song_2" />
+            <TextView
+                android:id="@+id/textViewSong1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/song_1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-        <Button
-            android:id="@+id/buttonPlay2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_play" />
+                <Button
+                    android:id="@+id/buttonPlay1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play" />
 
-        <Button
-            android:id="@+id/buttonStop2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_stop" />
+                <Button
+                    android:id="@+id/buttonStop1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_stop" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewSong2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/song_2" />
 
-    <Button
-        android:id="@+id/buttonPlaySE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_play_se_ogg" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonPlay2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play" />
+
+                <Button
+                    android:id="@+id/buttonStop2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_stop" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewSong3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/song_3" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonPlay3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play" />
+
+                <Button
+                    android:id="@+id/buttonStop3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_stop" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewSE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_play_se" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/buttonPlaySE"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play_se_ogg" />
+
+                <Button
+                    android:id="@+id/buttonPlaySEWav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/button_play_se_wav" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <ScrollView
         android:id="@+id/scrollViewLog"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
 
-            <TextView
-                android:id="@+id/textViewLog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholder_log" />
-
+        <TextView
+            android:id="@+id/textViewLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/placeholder_log" />
     </ScrollView>
 
 </LinearLayout>

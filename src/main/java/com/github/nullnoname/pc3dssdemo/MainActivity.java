@@ -33,6 +33,7 @@ import java.io.InputStreamReader;
 import com.github.nullnoname.paudiotrack.AssetFileInputProvider;
 import com.github.nullnoname.paudiotrack.ChannelAudioTrack;
 import com.github.nullnoname.paudiotrack.LibraryAudioTrack;
+import com.github.nullnoname.paudiotrack.MPMidiChannelFactory;
 
 import paulscode.sound.IStreamListener;
 import paulscode.sound.SoundSystem;
@@ -42,6 +43,7 @@ import paulscode.sound.SoundSystemLogger;
 import paulscode.sound.codecs.CodecIBXM;
 import paulscode.sound.codecs.CodecJOrbis;
 import paulscode.sound.codecs.CodecJSpeex;
+import paulscode.sound.codecs.CodecWavN;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,7 +63,8 @@ public class MainActivity extends Activity implements IStreamListener {
 	/** Log Tag */
 	private static final String TAG = "MainActivity";
 	/** Asset filenames */
-	private static final String[] FILENAMES = {"swansong.ogg", "bm.xm", "fables.spx", "gamestart.ogg"};
+	private static final String[] FILENAMES = {"swansong.ogg", "bm.xm", "fables.spx", "mz_331_3.mid", "gamestart.ogg", "gamestart.wav"};
+	private static final int SOUND_EFFECT_START_ID = 4;
 
 	/** Log buffer */
 	private StringBuffer logBuffer;
@@ -76,12 +79,12 @@ public class MainActivity extends Activity implements IStreamListener {
 	/** EditText for Audio Buffer Size Multiplier*/
 	private EditText editTextAudioBufferSizeMultiplier;
 
-	/** Footsteps play button */
-	private Button buttonPlaySE;
+	/** Sound effects play button */
+	private Button buttonPlaySE, buttonPlaySEWav;
 
 	/* These are buttons for songs */
-	private Button buttonPlay0, buttonPlay1, buttonPlay2;
-	private Button buttonStop0, buttonStop1, buttonStop2;
+	private Button buttonPlay0, buttonPlay1, buttonPlay2, buttonPlay3;
+	private Button buttonStop0, buttonStop1, buttonStop2, buttonStop3;
 
 	/** Our logger */
 	private CustomSoundSystemLogger logger;
@@ -112,12 +115,15 @@ public class MainActivity extends Activity implements IStreamListener {
 		editTextAudioBufferSizeMultiplier = (EditText)findViewById(R.id.editTextAudioBufferSizeMultiplier);
 
 		buttonPlaySE = (Button)findViewById(R.id.buttonPlaySE);
+		buttonPlaySEWav = (Button)findViewById(R.id.buttonPlaySEWav);
 		buttonPlay0 = (Button)findViewById(R.id.buttonPlay0);
 		buttonPlay1 = (Button)findViewById(R.id.buttonPlay1);
 		buttonPlay2 = (Button)findViewById(R.id.buttonPlay2);
+		buttonPlay3 = (Button)findViewById(R.id.buttonPlay3);
 		buttonStop0 = (Button)findViewById(R.id.buttonStop0);
 		buttonStop1 = (Button)findViewById(R.id.buttonStop1);
 		buttonStop2 = (Button)findViewById(R.id.buttonStop2);
+		buttonStop3 = (Button)findViewById(R.id.buttonStop3);
 
 		// Erase log text
 		textViewLog.setText("");
@@ -125,7 +131,12 @@ public class MainActivity extends Activity implements IStreamListener {
 		// Add the button click behaviors
 		buttonPlaySE.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				playSong(3);
+				playSong(4);
+			}
+		});
+		buttonPlaySEWav.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				playSong(5);
 			}
 		});
 		buttonPlay0.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +154,11 @@ public class MainActivity extends Activity implements IStreamListener {
 				playSong(2);
 			}
 		});
+		buttonPlay3.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				playSong(3);
+			}
+		});
 		buttonStop0.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				stopSong(0);
@@ -156,6 +172,11 @@ public class MainActivity extends Activity implements IStreamListener {
 		buttonStop2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				stopSong(2);
+			}
+		});
+		buttonStop3.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				stopSong(3);
 			}
 		});
 	}
@@ -174,8 +195,12 @@ public class MainActivity extends Activity implements IStreamListener {
 		// Set our AssetFileInputProvider
 		SoundSystemConfig.setFileInputProvider(new AssetFileInputProvider(this));
 
+		// Set our MIDIChannelFactory
+		SoundSystemConfig.setMidiChannelFactory(new MPMidiChannelFactory());
+
 		try {
 			// Set codecs
+			SoundSystemConfig.setCodec("wav", CodecWavN.class);
 			SoundSystemConfig.setCodec("ogg", CodecJOrbis.class);
 			SoundSystemConfig.setCodec("spx", CodecJSpeex.class);
 			SoundSystemConfig.setCodec("mod", CodecIBXM.class);
@@ -214,7 +239,7 @@ public class MainActivity extends Activity implements IStreamListener {
 			String s = editTextAudioBufferSizeMultiplier.getText().toString();
 			return Integer.parseInt(s);
 		} catch (NumberFormatException e) {
-			return 1;
+			return 8;
 		}
 	}
 
@@ -233,7 +258,7 @@ public class MainActivity extends Activity implements IStreamListener {
 
 	/**
 	 * Play a song (actual code in thread)
-	 * @param n Song number (3:Sound Effect)
+	 * @param n Song number (4-5:Sound Effect)
 	 */
 	private void playSongSub(final int n) {
 		final String filename = FILENAMES[n];
@@ -244,7 +269,7 @@ public class MainActivity extends Activity implements IStreamListener {
 
 		if(soundSystem == null) soundSystem = new SoundSystem();
 
-		if(n == 3) { // Sound Effect
+		if(n >= SOUND_EFFECT_START_ID) { // Sound Effect
 			String tempSourceName = soundSystem.quickPlay(false, AssetFileInputProvider.createAssetURL(filename), filename, false, 0, 0, 0, SoundSystemConfig.ATTENUATION_NONE, 0);
 			logger.message("Temporary source name:" + tempSourceName, 0);
 		} else { // Streaming songs
@@ -254,7 +279,7 @@ public class MainActivity extends Activity implements IStreamListener {
 
 	/**
 	 * Stop a song
-	 * @param n Song number (3:Sound Effect)
+	 * @param n Song number
 	 */
 	private void stopSong(final int n) {
 		final String filename = FILENAMES[n];
